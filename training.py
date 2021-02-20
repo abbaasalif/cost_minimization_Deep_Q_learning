@@ -33,3 +33,34 @@ dqn = dqn.DQN(max_memory = max_memory, discount = 0.9)
 # choosing the mode
 train = True
 
+# training the AI
+env.train = train
+model = brain.model
+if (env.train):
+    for epoch in range(1, number_epochs):
+        #initializing all the variables of both the environment and the training loop
+        total_reward = 0
+        loss = 0.0
+        new_month = np.random.randint(0,12)
+        env.reset(new_month - new_month)
+        game_over = False
+        current_state, _, _ = env.observe()
+        #1minute
+        timestep = 0
+        while ((not game_over) and (timestep <= 5*30*24 *60)):
+            # playing the next action by exploration
+
+            # playing the next action by inference 
+
+            #updating the environment and reaching the next state
+
+            # gathering in two separate batches the inputs and the targets
+
+            # computing the loss over the two whole batches of inputs and targets
+
+
+
+
+
+
+
