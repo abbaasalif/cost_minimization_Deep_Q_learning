@@ -121,7 +121,7 @@ class Environment(object):
     
     #MAKING A METHOD THAT RESETS THE ENVIRONMENT
 
-    def reset_env(self, new_month):
+    def reset(self, new_month):
         self.atmospheric_temperature = self.monthly_atmospheric_temperatures[new_month]
         self.initial_month = new_month
         self.current_number_users = self.initial_number_users
@@ -137,3 +137,5 @@ class Environment(object):
 
     
     #MAKING A METHOD THAT GIVES US ANY TIME THE CURRENT STATE , THE LAST REWARD AND WHETHER THE GAME IS OVER
+
+    def 
