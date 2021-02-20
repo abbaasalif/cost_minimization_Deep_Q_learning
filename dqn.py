@@ -18,9 +18,9 @@ class DQN(object):
         if len(self.memory) > self.max_memory:
             del self.memory[0]
 
-    # Making a method that builds two batches of 10 inputs and 10 targets by extracting 10 transitions
+    # Making a method that builds two batches of 512 inputs and 512 targets by extracting 512 transitions
 
-    def get_batch(self, model, batch_size=10):
+    def get_batch(self, model, batch_size=512):
         len_memory = len(self.memory)
         num_inputs = self.memory[0][0][0].shape[1]
         num_outputs = model.output_shape[-1]
