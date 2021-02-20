@@ -13,5 +13,35 @@ class DQN(object):
         self.discount = discount
 
     #Making a method that builds the memory in Experience Replay
+    def remember(self, transition, game_over):
+        self.memory.append([transition, game_over])
+        if len(self.memory) > self.max_memory:
+            del self.memory[0]
 
     # Making a method that builds two batches of 10 inputs and 10 targets by extracting 10 transitions
+
+    def get_batch(self, model, batch_size=10):
+        len_memory = len(self.memory)
+        num_inputs = self.memory[0][0][0].shape[1]
+        num_outputs = model.output_shape[-1]
+        inputs = np.zeros((min(len_memory, batch_size), num_inputs))
+        targets = np.zeros((min(len_memory, batch_size), num_outputs))
+        for i, idx in enumerate(np.random.randint(0, len_memory, size = min(len_memory, batch_size))):
+            current_state, action, reward, next_state = self.memory[idx][0]
+            game_over = self.memory[idx][1]
+            inputs[i] = current_state
+            targets[i] = model.predict(current_state)[0]
+            Q_sa = np.max(model.predict(next_state)[0])
+            if game_over:
+                targets[i, action] = reward
+            else:
+                targets[i, action] = reward + self.discount * Q_sa
+        return inputs, targets
+
+
+
+
+
+
+
+
