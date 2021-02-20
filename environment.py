@@ -138,4 +138,12 @@ class Environment(object):
     
     #MAKING A METHOD THAT GIVES US ANY TIME THE CURRENT STATE , THE LAST REWARD AND WHETHER THE GAME IS OVER
 
-    def 
+    def observe(self):
+        scaled_temperature_ai = (self.temperature_ai - self.min_temperature) / (self.max_temperature - self.min_temperature)
+        scaled_number_users = (self.current_number_users - self.min_number_users) / (self.max_number_users - self.min_number_users)
+        scaled_rate_data = (self.current_rate_data - self.min_rate_data) / (self.max_rate_data - self.min_rate_data)
+        current_state = np.matrix([scaled_temperature_ai, scaled_number_users , scaled_rate_data])
+
+        return current_state, self.reward, self.game_over
+        
+
