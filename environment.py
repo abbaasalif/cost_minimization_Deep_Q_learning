@@ -109,7 +109,13 @@ class Environment(object):
           
         #Scaling the next state
         
-        
+        scaled_temperature_ai = (self.temperature_ai - self.min_temperature) / (self.max_temperature - self.min_temperature)
+        scaled_number_users = (self.current_number_users - self.min_number_users) / (self.max_number_users - self.min_number_users)
+        scaled_rate_data = (self.current_rate_data s- self.min_rate_data) / (self.max_rate_data - self.min_rate_data)
+        next_state = np.matrix([scaled_temperature_ai, scaled_number_users , scaled_rate_data])
+
+        # Returning to the next state, The reward, and game over
+        return next_state, self.reward, self.game_over        
     
     #MAKING A METHOD THAT RESETS THE ENVIRONMENT
     
