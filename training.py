@@ -47,8 +47,9 @@ if (env.train):
         current_state, _, _ = env.observe()
         #1minute
         timestep = 0
-        while ((not game_over) and (timestep <= 5*30*24 *60)):
+        while ((not game_over) and (timestep <= 5 * 30 * 24 *60)):
             # playing the next action by exploration
+
 
             # playing the next action by inference 
 
