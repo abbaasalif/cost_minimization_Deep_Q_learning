@@ -1,4 +1,3 @@
-#Artificial Intelligence for Buisness - Case Study 2
 #Building the environment
 
 #importing the libraries
