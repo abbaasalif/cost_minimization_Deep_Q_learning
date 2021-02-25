@@ -9,7 +9,7 @@ class Environment(object):
     
     
     #INTRODUCING AND INITIALIZING ALL THE PARAMETERS AND VARIABLES OFF THE ENVIRONMENT
-    def __init__(self, optimal_temperature = (18.0,24.0), initial_month = 0, initial_number_users = 10, inital_rate_data = 60):
+    def __init__(self, optimal_temperature = (18.0,24.0), initial_month = 0, initial_number_users = 10, initial_rate_data = 60):
         
         self.monthly_atmospheric_temperatures = [1.0,5.0,7.0,10.0,11.0, 20.0, 23.0, 24.0 , 22.0 , 10.0, 5.0, 1.0]
         self.initial_month = initial_month
