@@ -18,7 +18,7 @@ rn.seed(12345)
 epsilon = 0.3
 number_actions=5
 direction_boundary = (number_actions -1)/2
-number_epochs = 100
+number_epochs = 1000
 max_memory = 3000
 batch_size = 512
 temperature_step = 1.5
@@ -35,6 +35,10 @@ train = True
 # training the AI
 env.train = train
 model = brain.model
+early_stopping = True
+patience = 10
+best_total_reward = -np.inf
+patience_count = 0
 if (env.train):
     for epoch in range(1, number_epochs):
         #initializing all the variables of both the environment and the training loop
