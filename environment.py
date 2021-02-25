@@ -26,7 +26,7 @@ class Environment(object):
         self.initial_number_users = initial_number_users
         self.current_number_users = initial_number_users
         self.initial_rate_data = initial_rate_data
-        self.current_rate_data = inital_rate_data
+        self.current_rate_data = initial_rate_data
         self.intrinsic_temperature = self.atmospheric_temperature + 1.25 * self.current_number_users + 1.25 * self.current_rate_data
         self.temperature_ai = self.intrinsic_temperature
         self.temperature_noai = (self.optimal_temperature[0] + self.optimal_temperature[1])/2.0
