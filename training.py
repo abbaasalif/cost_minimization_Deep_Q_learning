@@ -18,7 +18,7 @@ rn.seed(12345)
 epsilon = 0.3
 number_actions=5
 direction_boundary = (number_actions -1)/2
-number_epochs = 1000
+number_epochs = 100
 max_memory = 3000
 batch_size = 512
 temperature_step = 1.5
@@ -74,7 +74,21 @@ if (env.train):
             inputs, targets = dqn.get_batch(model, batch_size = batch_size)
 
             # computing the loss over the two whole batches of inputs and targets
-            
+            loss += model.train_on_batch(inputs, targets) # take loss and increment it
+            timestep +=1
+            current_state = next_state
+
+        #printing the training results
+        print("\n")
+        print("Epoch: {:03d}/{:03d}".format(epoch, number_epochs))
+        print("Total energy spent with an AI: {:.0f}".format(env.total_energy_ai))
+        print("Total energy spent without an AI: {:.0f}". format(env.total_energy_noai))
+        # saving the model
+        model.save("model.h5")
+
+
+
+
 
 
 
