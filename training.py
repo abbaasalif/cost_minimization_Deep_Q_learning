@@ -65,10 +65,16 @@ if (env.train):
                     direction = 1
                 energy_ai = abs(action - direction_boundary) + temperature_step
             #updating the environment and reaching the next state
-
+            next_state, reward, game_over = env.update_env(direction, energy_ai, int(timestep/(30*24*60)))
+            total_reward +=reward
+            #storing the new transition into the memory
+            dqn.remember([current_state, action, reward, next_state], game_over)
+            
             # gathering in two separate batches the inputs and the targets
+            inputs, targets = dqn.get_batch(model, batch_size = batch_size)
 
             # computing the loss over the two whole batches of inputs and targets
+            
 
 
 
