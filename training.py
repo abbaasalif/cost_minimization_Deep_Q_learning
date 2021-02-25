@@ -58,7 +58,7 @@ if (env.train):
             # playing the next action by inference
             else:
                 q_values = model.predict(current_state)
-                action = np.argmax(q_values.reshape[0])
+                action = np.argmax(q_values[0])
                 if (action - direction_boundary < 0):
                     direction = -1
                 else:
