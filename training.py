@@ -56,8 +56,14 @@ if (env.train):
                     direction = 1
                 energy_ai = abs(action - direction_boundary) + temperature_step
             # playing the next action by inference
-            
-
+            else:
+                q_values = model.predict(current_state)
+                action = np.argmax(q_values.reshape[0])
+                if (action - direction_boundary < 0):
+                    direction = -1
+                else:
+                    direction = 1
+                energy_ai = abs(action - direction_boundary) + temperature_step
             #updating the environment and reaching the next state
 
             # gathering in two separate batches the inputs and the targets
