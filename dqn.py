@@ -3,23 +3,24 @@
 # importing the libraries
 import numpy as np
 
-class DQN(object):
+# IMPLEMENTING DEEP Q-LEARNING WITH EXPERIENCE REPLAY
 
-    #Introduction and initialization of all parameters and variables of Deep Q Network
+class DQN(object):
+    
+    # INTRODUCING AND INITIALIZING ALL THE PARAMETERS AND VARIABLES OF THE DQN
     def __init__(self, max_memory = 100, discount = 0.9):
         self.memory = list()
         self.max_memory = max_memory
         self.discount = discount
 
-    #Making a method that builds the memory in Experience Replay
+    # MAKING A METHOD THAT BUILDS THE MEMORY IN EXPERIENCE REPLAY
     def remember(self, transition, game_over):
         self.memory.append([transition, game_over])
         if len(self.memory) > self.max_memory:
             del self.memory[0]
 
-    # Making a method that builds two batches of 512 inputs and 512 targets by extracting 512 transitions
-
-    def get_batch(self, model, batch_size=512):
+    # MAKING A METHOD THAT BUILDS TWO BATCHES OF INPUTS AND TARGETS BY EXTRACTING TRANSITIONS FROM THE MEMORY
+    def get_batch(self, model, batch_size = 10):
         len_memory = len(self.memory)
         num_inputs = self.memory[0][0][0].shape[1]
         num_outputs = model.output_shape[-1]
@@ -36,8 +37,6 @@ class DQN(object):
             else:
                 targets[i, action] = reward + self.discount * Q_sa
         return inputs, targets
-
-
 
 
 
