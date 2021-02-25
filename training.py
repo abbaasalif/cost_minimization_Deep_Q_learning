@@ -48,9 +48,15 @@ if (env.train):
         timestep = 0
         while ((not game_over) and (timestep <= 5 * 30 * 24 *60)):
             # playing the next action by exploration
-
-
-            # playing the next action by inference 
+            if np.random.rand() <= epsilon:
+                action = np.random.randint(0,number_actions)
+                if (action - direction_boundary < 0):
+                    direction = -1
+                else:
+                    direction = 1
+                energy_ai = abs(action - direction_boundary) + temperature_step
+            # playing the next action by inference
+            
 
             #updating the environment and reaching the next state
 
