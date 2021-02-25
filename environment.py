@@ -13,7 +13,7 @@ class Environment(object):
         
         self.monthly_atmospheric_temperatures = [1.0,5.0,7.0,10.0,11.0, 20.0, 23.0, 24.0 , 22.0 , 10.0, 5.0, 1.0]
         self.initial_month = initial_month
-        self.atmospheric_temperature = self.monthly_atmospheric_temperatures
+        self.atmospheric_temperature = self.monthly_atmospheric_temperatures[initial_month]
         self.optimal_temperature = optimal_temperature
         self.min_temperature = -20
         self.max_temperature = 80
